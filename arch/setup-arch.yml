@@ -1,0 +1,21 @@
+---
+- name: Arch Linux Environment Setup
+  hosts: hosts
+  connection: local
+  gather_facts: true
+  become: false
+
+  roles:
+    - { role: desktop, tags: ['desktop'] }
+    - { role: x11_compat, tags: ['x11_compat'] }
+    - { role: amd, tags: ['amd'] }
+    - { role: greeter, tags: ['greeter'] }
+    - { role: audio, tags: ['audio'] }
+    - { role: basic_utils, tags:  ['basic_utils'] }
+    - { role: dev_utils, tags: ['dev_utils'] }
+    - { role: shell_utils, tags: ['shell_utils'] }
+    - { role: network, tags: ['network'] }
+    - { role: bluetooth, tags: ['bluetooth'] }
+    - { role: fonts, tags: ['fonts'] }
+    - { role: gui_apps, tags: ['gui_apps'] }
+

@@ -1,0 +1,11 @@
+---
+- name: Install bluetooth tools
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - bluez
+    - bluetui
+  notify:
+   - Start and enable Bluetooth service

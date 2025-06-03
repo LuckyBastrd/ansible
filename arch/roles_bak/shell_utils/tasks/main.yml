@@ -1,0 +1,38 @@
+---
+- name: Install zsh shell
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - zsh
+    - zsh-completions
+    - zsh-syntax-highlighting
+    - zsh-autosuggestions
+  notify:
+    - Change default shell to zsh for user
+
+- name: Check if Oh My Zsh is already installed
+  ansible.builtin.stat:
+    path: "{{ ansible_env.HOME }}/.oh-my-zsh"
+  register: ohmyzsh
+
+- name: Install Oh My Zsh
+  ansible.builtin.shell: |
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  args:
+    executable: /bin/bash
+  become: false
+  environment:
+    RUNZSH: "no"
+  when: not ohmyzsh.stat.exists
+
+- name: Install shell utilities
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - tldr
+    - fzf
+    - tmux

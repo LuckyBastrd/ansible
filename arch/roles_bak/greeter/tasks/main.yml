@@ -1,0 +1,10 @@
+---
+- name: Install greeter
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - ly
+  notify:
+    - Start and enable Ly aservice

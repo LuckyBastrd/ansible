@@ -1,0 +1,23 @@
+---
+- name: Start and enable Waybar user service
+  ansible.builtin.systemd:
+    name: waybar.service
+    state: started
+    enabled: true
+    scope: user
+  become: false
+  become_user: "{{ ansible_user_id }}"
+  environment:
+    XDG_RUNTIME_DIR: "/run/user/{{ ansible_user_uid }}"
+
+- name: Start and enable Hyprpaper user service
+  ansible.builtin.systemd:
+    name: hyprpaper.service
+    state: started
+    enabled: true
+    scope: user
+  become: false
+  become_user: "{{ ansible_user_id }}"
+  environment:
+    XDG_RUNTIME_DIR: "/run/user/{{ ansible_user_uid }}"
+

@@ -1,0 +1,9 @@
+---
+- name: Install X11 compatibility packages
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - xorg-server
+    - xorg-xinit

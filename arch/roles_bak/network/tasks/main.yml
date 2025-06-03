@@ -1,0 +1,11 @@
+---
+- name: Install network tools
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - networkmanager
+    - network-manager-applet
+  notify:
+    - Start and enable NetworkManager service

@@ -1,0 +1,7 @@
+---
+- name: Start and enable Ly aservice
+  ansible.builtin.systemd:
+    name: ly.service
+    state: started
+    enabled: true
+  become: true

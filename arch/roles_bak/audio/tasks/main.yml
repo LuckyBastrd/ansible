@@ -1,0 +1,15 @@
+---
+- name: Install PipeWire and related audio packages
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - pipewire
+    - pipewire-alsa
+    - pipewire-jack
+    - pipewire-pulse
+    - gst-plugin-pipewire
+    - libpulse
+    - wireplumber
+    - pavucontrol

@@ -1,0 +1,21 @@
+---
+- name: Install dev utilities
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - base-devel
+    - curl
+    - wget
+    - git
+    - openssh
+    - ghostty
+    - nano
+    - vim
+    - neovim
+    - stylua
+    - lua51
+    - luarocks
+    - go
+

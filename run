@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+cd "$(dirname "$0")"
+
+if [[ -z "$1" ]]; then
+  echo "Usage: $0 {arch|mac}"
+  exit 1
+fi
+
+case "$1" in
+  arch)
+    echo
+    echo "======================================"
+    echo "  Installing Arch requirements..."
+    echo "======================================"
+    echo
+    ansible-galaxy install -r requirements-arch.yml
+    echo
+    echo "======================================"
+    echo "  Running Arch setup playbook..."
+    echo "======================================"
+    echo
+    ANSIBLE_CONFIG=arch/ansible.cfg ansible-playbook -i inventory/localhost arch/setup-arch.yml --ask-become-pass
+    ;;
+  mac)
+    echo
+    echo "======================================"
+    echo "  Installing Mac requirements..."
+    echo "======================================"
+    echo
+    ansible-galaxy install -r requirements-mac.yml
+    echo
+    echo "======================================"
+    echo "  Running Mac setup playbook..."
+    echo "======================================"
+    echo
+    ANSIBLE_CONFIG=mac/ansible.cfg ansible-playbook -i inventory/localhost mac/setup-mac.yml --ask-become-pass
+    ;;
+  *)
+    echo "Usage: $0 {arch|mac}"
+    exit 1
+    ;;
+esac

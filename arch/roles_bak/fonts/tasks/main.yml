@@ -1,0 +1,10 @@
+---
+- name: Install fonts
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - ttf-font-awesome
+    - ttf-jetbrains-mono-nerd
+    - ttf-nerd-fonts-symbols

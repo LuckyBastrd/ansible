@@ -1,0 +1,26 @@
+---
+- name: Install Hyprland and essential packages
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - hyprland
+    - dunst
+    - uwsm
+    - wofi
+    - rofi
+    - xdg-desktop-portal-hyprland
+    - xdg-utils
+    - qt5-wayland
+    - qt6-wayland
+    - polkit-kde-agent
+    - grim
+    - slurp
+    - waybar
+    - hyprpaper
+    - hyprlock
+  notify:
+    - Start and enable Waybar user service
+    - Start and enable Hyprpaper user service
+
