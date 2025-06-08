@@ -6,9 +6,6 @@
   become: true
   loop:
     - zsh
-    - zsh-completions
-    - zsh-syntax-highlighting
-    - zsh-autosuggestions
   notify:
     - Change default shell to zsh for user
 

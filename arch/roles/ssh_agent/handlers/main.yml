@@ -1,0 +1,7 @@
+---
+- name: Enable ssh-agent user service
+  command: systemctl --user enable ssh-agent
+
+- name: Start ssh-agent user service
+  command: systemctl --user start ssh-agent
+

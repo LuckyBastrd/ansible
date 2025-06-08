@@ -9,7 +9,6 @@
     - curl
     - wget
     - git
-    - openssh
     - ghostty
     - nano
     - vim

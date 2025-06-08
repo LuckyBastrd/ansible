@@ -1,0 +1,24 @@
+---
+- name: Install ssh-agent toosl
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - openssh
+
+- name: Ensure systemd user directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/systemd/user"
+    state: directory
+    mode: '0755'
+
+- name: Copy ssh-agent.service user systemd unit file if not already present
+  copy:
+    src: ssh-agent.service
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/ssh-agent.service"
+    mode: '0644'
+    force: false
+  notify:
+    - Enable ssh-agent user service
+    - Start ssh-agent user service

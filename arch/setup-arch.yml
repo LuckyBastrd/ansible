@@ -13,6 +13,7 @@
     - { role: audio, tags: ['audio'] }
     - { role: basic_utils, tags:  ['basic_utils'] }
     - { role: dev_utils, tags: ['dev_utils'] }
+    - { role: ssh_agent, tags: ['ssh_agent'] }
     - { role: shell_utils, tags: ['shell_utils'] }
     - { role: network, tags: ['network'] }
     - { role: bluetooth, tags: ['bluetooth'] }
