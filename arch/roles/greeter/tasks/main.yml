@@ -5,6 +5,7 @@
     state: present
   become: true
   loop:
-    - ly
+    - greetd
+    - greetd-tuigreet
   notify:
-    - Start and enable Ly aservice
+    - Start and enable greetd aservice
