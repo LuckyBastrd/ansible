@@ -1,7 +1,7 @@
 ---
-- name: Start and enable greetd aservice
+- name: Start and enable Ly aservice
   ansible.builtin.systemd:
-    name: greetd.service
+    name: ly.service
     state: started
     enabled: true
   become: true
